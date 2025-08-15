@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Checkouts</h1>
+    <a href="{{ url_for('checkout_book') }}" class="btn btn-primary">Checkout Book</a>
+    <a href="{{ url_for('return_book') }}" class="btn btn-secondary">Return Book</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>User</th>
+                <th>Book</th>
+                <th>Checkout Date</th>
+                <th>Due Date</th>
+                <th>Returned Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for checkout in checkouts %}
+                <tr>
+                    <td>{{ checkout.id }}</td>
+                    <td>{{ checkout.user.name }}</td>
+                    <td>{{ checkout.book.title }}</td>
+                    <td>{{ checkout.checkout_date.strftime('%Y-%m-%d') }}</td>
+                    <td>{{ checkout.due_date.strftime('%Y-%m-%d') }}</td>
+                    <td>{{ checkout.returned_date.strftime('%Y-%m-%d') if checkout.returned_date else '' }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

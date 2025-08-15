@@ -1,0 +1,16 @@
+[project]
+name = "library-management"
+version = "0.1.0"
+description = "A basic library management system."
+authors = ["Gemini"]
+dependencies = [
+    "flask",
+    "flask-sqlalchemy",
+    "flask-wtf",
+    "pydantic",
+    "email-validator"
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Return Book</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.checkout_id.label }} {{ form.checkout_id(class_='form-control') }}
+        </div>
+        {{ form.submit(class_='btn btn-primary') }}
+    </form>
+{% endblock %}

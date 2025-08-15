@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Users with Books</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Book</th>
+                <th>Checkout Date</th>
+                <th>Due Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for checkout in user_checkouts %}
+                <tr>
+                    <td>{{ checkout.user.name }}</td>
+                    <td>{{ checkout.book.title }}</td>
+                    <td>{{ checkout.checkout_date.strftime('%Y-%m-%d') }}</td>
+                    <td>{{ checkout.due_date.strftime('%Y-%m-%d') }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

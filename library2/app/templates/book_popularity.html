@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Book Popularity</h1>
+    <h2>Most Checkouts</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Book Title</th>
+                <th>Checkouts</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books|sort(attribute='checkout_count', reverse=True) %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.checkouts|length }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Fewest Checkouts</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Book Title</th>
+                <th>Checkouts</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books|sort(attribute='checkout_count') %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.checkouts|length }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

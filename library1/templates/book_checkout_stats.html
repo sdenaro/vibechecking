@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Book Checkout Stats</h1>
+    <h2>Most Checked Out</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Book</th>
+                <th>Checkouts</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in most_checked_out %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.checkouts | length }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Fewest Checked Out</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Book</th>
+                <th>Checkouts</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in fewest_checked_out %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.checkouts | length }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

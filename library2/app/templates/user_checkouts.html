@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>User Checkouts</h1>
+    {% for user in users %}
+        <h2>{{ user.name }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Book Title</th>
+                    <th>Checkout Date</th>
+                    <th>Due Date</th>
+                    <th>Returned</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for checkout in user.checkouts %}
+                    <tr>
+                        <td>{{ checkout.book.title }}</td>
+                        <td>{{ checkout.checkout_date.strftime('%Y-%m-%d') }}</td>
+                        <td {% if checkout.due_date < now and not checkout.returned_date %}class="overdue"{% endif %}>{{ checkout.due_date.strftime('%Y-%m-%d') }}</td>
+                        <td>{{ 'Yes' if checkout.returned_date else 'No' }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+{% endblock %}
